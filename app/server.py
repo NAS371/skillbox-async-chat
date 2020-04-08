@@ -39,7 +39,7 @@ class ServerProtocol(asyncio.Protocol):
         print("Клиент вышел")
 
     def send_message(self, content: str):
-        message = f"{self.login}: {content}\n"
+        message = f"{self.login}: {content}"
 
         for user in self.server.clients:
             user.transport.write(message.encode())
