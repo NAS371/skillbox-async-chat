@@ -1,10 +1,12 @@
 #
 # Клиентское приложение с интерфейсом
 #
+import sys
 import asyncio
+import asyncqt
+
 from asyncio import transports
-from PySide2.QtWidgets import QMainWindow, QApplication
-from asyncqt import QEventLoop
+from PyQt5.QtWidgets import QMainWindow, QApplication
 from app.interface import Ui_MainWindow
 
 
@@ -66,8 +68,8 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         await asyncio.wait_for(coroutine, 1000)
 
 
-app = QApplication()
-loop = QEventLoop(app)
+app = QApplication(sys.argv)
+loop = asyncqt.QEventLoop(app)
 asyncio.set_event_loop(loop)
 
 window = MainWindow()
